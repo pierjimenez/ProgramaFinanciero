@@ -1,0 +1,40 @@
+	table.gridtable {
+		font-family: verdana,arial,sans-serif;
+		font-size:11px;
+		color:#333333;
+		border-width: 1px;
+		border-color: #666666;
+		border-collapse: collapse;
+	}
+	table.gridtable th {
+		border-width: 1px;
+		padding: 5px;
+		border-style: solid;
+		color:#ffffff;
+		border-color: #666666;
+		background-color: #5c9ccc;
+	}
+	table.gridtable td {
+		border-width: 1px;
+		padding: 1px;
+		border-style: solid;
+		border-color: #666666;
+		background-color: #ffffff;
+	}
+	.examplex {
+				float: left;
+				margin: 15px;
+			}
+			
+	.demox {
+				width: 200px;
+				height: 400px;
+				border-top: solid 1px #BBB;
+				border-left: solid 1px #BBB;
+				border-bottom: solid 1px #FFF;
+				border-right: solid 1px #FFF;
+				background: #FFF;
+				overflow: scroll;
+				padding: 5px;
+			}	
+			

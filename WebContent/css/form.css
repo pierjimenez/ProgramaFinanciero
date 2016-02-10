@@ -1,0 +1,275 @@
+input[readonly] {
+background-color: #E1E0D0;
+border: 0px 1px;
+}
+
+.seccion a.learn-more:link,
+.seccion a.learn-more:visited { 
+	font-size: 1.2em;
+	color:#1b75bb; 
+	font-weight:bold; 
+	text-decoration:none; 
+	padding-left:17px; 
+	/*background: url(/ProgramaFinanciero/image/icon-learn-more-left.gif) no-repeat 0 2px; */
+}
+.seccion a.learn-more:hover,
+.seccion a.learn-more:active {
+	font-size: 1.2em;
+	color:#0b559b;
+	background-position: 0 -87px; 
+}
+
+.seccion a.learn-more2:link,
+.seccion a.learn-more2:visited { 
+	font-size: 1.2em;
+	color:#0078D2; 
+	font-weight:bold; 
+	text-decoration:none; 
+	padding-left:17px;  
+}
+.seccion a.learn-more2:hover,
+.seccion a.learn-more2:active {
+	font-size: 1.2em;
+	color:#0b559b;
+	background-position: 0 -87px; 
+}
+
+.subTitulo{
+	font-size: 10pt;
+	font-weight: bold;
+}
+.label{
+	font-size: 1.2em;
+	font-weight:  bold;
+}
+.centered{
+	position: absolute;
+    top: 35%;
+  	left: 45%; 
+}
+.item_login{
+	margin-left: 150px;
+	margin-top: 5px;	
+}
+.item_login input{
+	width:200; 	
+	height:25; 
+}
+
+.item_login label{
+	font-size: 13;
+	font-weight:bold; 
+}
+
+.column {
+	width: 327px;
+	margin-left: -163px; 
+}
+
+.login {
+    background: url(/ProgramaFinanciero/image/login.png) fixed center;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 500px;
+    border: 1px #005a8c solid;
+    
+
+}
+.errorMessage_login {
+	font-size: 13;
+	font-weight:bold;
+    color: #D8000C;
+    margin:0;
+    list-style:none;
+    list-style-type: none;
+}
+
+#circularMenu {padding:0; margin:0 auto; list-style:none; position:relative; width:960px; height:320px; background:#fff url(/ProgramaFinanciero/image/fon_body.jpg) no-repeat;}
+#circularMenu li {display:block; width:60px; height:60px; position:absolute;}
+#circularMenu li.formulario {left:450px; top:13px; }
+
+
+#circularMenu li.consultas {left:565px; top:115px; }
+#circularMenu li.security {left:335px; top:115px; }
+
+
+#circularMenu li.maestros {left:455px; top:225px; }
+
+
+
+#circularMenu li a b {display:none;}
+#circularMenu li a {display:block; width:60px; height:60px; text-align:center;}
+
+#circularMenu li a:hover {background:url(/ProgramaFinanciero/image/circle.gif); text-decoration:none; font-family:georgia, serif;}
+#circularMenu li a:hover b {position:absolute; display:block; width:100px; height:100px; font-size:16px; color:#63352c; background:#fff;}
+#circularMenu li a:hover b span {display:block; font-size:12px; color:#888; font-weight:normal; margin-top:15px;}
+
+#circularMenu li.formulario a:hover b {left:-22px; top:100px;}
+
+
+#circularMenu li.consultas a:hover b  {left:-132px; top:-11px;}
+#circularMenu li.security a:hover b  {left:93px; top:-11px;}
+
+
+#circularMenu li.maestros a:hover b  {left:-22px; top:-121px;} 
+
+
+.actionMessage, .errorMessage{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:7px 10px 7px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    font-size:13px;
+    list-style:none;
+    list-style-type: none;
+}
+
+.actionMessage {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url(/ProgramaFinanciero/image/iconsuccess.png);
+}
+
+.errorMessage {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url(/ProgramaFinanciero/image/iconerror.png);
+}
+.datosGrupoEmpresa {
+    color: #0078D2;
+    background-color:#ffffff;    
+	border:1px solid #D5E2EE;
+	border-radius:3px;
+	margin:20px 20px;
+	padding:20px 20px;
+	position:relative;
+	background-color:white;
+}
+
+.titulo {
+ color: #0078D2;
+ font-family: Arial, sans-serif;
+ text-align: left;
+ border-bottom:1px dotted #848484;
+ font-size: 15px; 
+ font-weight: bold;
+}
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:3px;
+	border:1px solid #7abcf5;
+	display:inline-block;
+	color:#262324;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:1px 12px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}.myButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.bk_tabs {
+	background-color: #FFFFFF;
+	border-top-width: 4px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-right-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+}
+.ln_formatos {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	background-color: #FFFFFF;
+	height: 24px;
+}
+
+
+.espace{
+	color: #0078D2;
+	height:40px;
+	width: 500px;
+	font-weight: bold;
+	text-align: right;
+	font-size: 16px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.espaceTime{
+	color: #0078D2;
+	height:15px;
+	width: 500px;
+	font-weight: bold;
+	text-align: right;
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.banner{
+	height:90px;
+	width: 400px;
+	background:url(../image/logoperu.png) no-repeat 0 0;
+}
+
+.ancho{
+	height:7px;
+}
+
+.ancho1{
+	height: 10px;
+	font-size: 5px;
+}
+.usuario {
+	padding:35px 10px 7px 300px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #005a8c;
+}
+.usuario a{ 
+	color: #ffffff;
+	text-decoration:none; 
+	font-weight: bold;
+}
+
+
+#home{
+	padding:40px 10px 1px 1px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px; 
+	color: #ffffff;
+}
+#home a{ 
+	color: #ffffff;
+	text-decoration:none; 
+	font-weight: bold;
+}
+.formpanel{
+border:1px solid #D5E2EE;
+clear:right;
+overflow:auto;
+position:relative;
+padding:20px 10px;
+}

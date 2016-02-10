@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+<!--		<property name="connection.driver_class">-->
+<!--			oracle.jdbc.driver.OracleDriver-->
+<!--		</property>-->
+<!--		-->
+<!--		<property name="connection.url">-->
+<!--			jdbc:oracle:thin:@118.247.4.22:1521:orcl-->
+<!--		</property>-->
+<!--		<property name="connection.username">iipf</property>-->
+<!--		<property name="connection.password">iipf</property>-->
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Disable the second-level cache  -->
+		<property name="cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+
+		<!-- Echo all executed SQL to stdout -->
+<!--		<property name="show_sql">true</property>-->
+
+		<!-- Drop and re-create the database schema on startup -->
+<!--		<property name="hbm2ddl.auto">update</property>-->
+		<mapping class="pe.com.bbva.iipf.mantenimiento.model.Empresa" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Programa" />
+		<mapping class="pe.com.bbva.iipf.mantenimiento.model.Tabla" />
+		<mapping class="pe.com.bbva.iipf.pf.model.AnalisisSectorial" />
+		<mapping class="pe.com.bbva.iipf.cpy.model.PFSunat" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Parametro" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Planilla"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.ProgramaBlob"/> 
+		<mapping class="pe.com.bbva.iipf.pf.model.rccan" />
+		<mapping class="pe.com.bbva.iipf.pf.model.rccmes" />
+		<mapping class="pe.com.bbva.iipf.pf.model.rcd" />
+		<mapping class="pe.com.bbva.iipf.pf.model.LineasRelacionBancarias" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Accionista"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.PrincipalesEjecutivos"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.Participaciones"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.RatingExterno"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.CompraVenta"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.NegocioBeneficio"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.EstructuraLimite"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.SintesisEconomica"/>	
+		<mapping class="pe.com.bbva.iipf.pf.model.Rating"/>		
+		<mapping class="pe.com.bbva.iipf.pf.model.EstructuraLimite"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.LimiteFormalizado"/>
+		<mapping class="pe.com.bbva.iipf.seguridad.model.entity.Opcion"/>
+		<mapping class="pe.com.bbva.iipf.seguridad.model.entity.OpcionPerfil"/>
+		<mapping class="pe.com.bbva.iipf.seguridad.model.entity.UsuarioPerfil"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.Anexo"/>		
+		<mapping class="pe.com.bbva.iipf.pf.model.AnexoColumna"/>		
+		<mapping class="pe.com.bbva.iipf.pf.model.Trccmes" />
+		<mapping class="pe.com.bbva.iipf.pf.model.PoolBancario" />
+		<mapping class="pe.com.bbva.iipf.pf.model.OpcionPool" />
+		<mapping class="pe.com.bbva.iipf.pf.model.EfetividadCartera" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Rentabilidad" />
+		<mapping class="pe.com.bbva.iipf.pf.model.RentabilidadBEC" />
+		<mapping class="pe.com.bbva.iipf.pf.model.ArchivoAnexo" />
+		<mapping class="pe.com.bbva.iipf.mantenimiento.model.LogCargaDatos" /> 
+		<mapping class="pe.com.bbva.iipf.pf.model.CabTabla"/>		
+		<mapping class="pe.com.bbva.iipf.pf.model.SintesisEconomicoBlob"/> 
+		<mapping class="pe.com.bbva.iipf.pf.model.ClaseCredito"/> 
+		<mapping class="pe.com.bbva.iipf.pf.model.Garantia"/> 
+		<mapping class="pe.com.bbva.iipf.pf.model.SustentoOperacion"/>	
+		<mapping class="pe.com.bbva.iipf.pf.model.AnexoGarantia"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.DatosBasico"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.DatosBasicoBlob"/>	
+		<mapping class="pe.com.bbva.iipf.pf.model.RatingBlob"/>	
+		<mapping class="pe.com.bbva.iipf.pf.model.ReporteCredito"/>	
+		<mapping class="pe.com.bbva.iipf.pf.model.CapitalizacionBursatil"/>			
+		<mapping class="pe.com.bbva.iipf.pf.model.Pfrating"/>
+		<mapping class="pe.com.bbva.iipf.pf.model.ArchivoReporteCredito" />
+		<mapping class="pe.com.bbva.iipf.pf.model.Comex" />
+<!-- 		<mapping class="pe.com.bbva.iipf.pf.model.kc10comex" /> -->
+		<mapping class="pe.com.bbva.iipf.seguridad.model.entity.RolPerfil"/>
+	
+		
+	</session-factory>
+
+</hibernate-configuration>

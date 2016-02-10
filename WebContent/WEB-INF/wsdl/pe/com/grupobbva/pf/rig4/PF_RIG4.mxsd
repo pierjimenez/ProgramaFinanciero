@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema elementFormDefault="qualified" targetNamespace="http://grupobbva.com.pe/pf/rig4/" xmlns:ps9="http://grupobbva.com.pe/xsd/ps9/" xmlns:tns="http://grupobbva.com.pe/pf/rig4/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:import namespace="http://grupobbva.com.pe/xsd/ps9/" schemaLocation="../../xsd/ps9/PS9_v01.mxsd"/>
+	
+	<xsd:element name="ConDlgRIG4Rq" type="tns:ctConDlgRIG4Rq">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ConDlgRIG4Rq;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+	<xsd:element name="ConDlgRIG4Rs" type="tns:ctConDlgRIG4Rs">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ConDlgRIG4Rs;XSDElementDeclaration=1$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+	
+	<!-- ======================== -->
+	<!-- ComplexTypes Definitions -->
+	<!-- ======================== -->
+	
+	<!-- ***** Request ***** -->
+	
+	<xsd:complexType name="ctBodyRq">
+	  <xsd:sequence>
+	  	<xsd:element name="codCentral" type="tns:stCodCentral"/>
+	  	<xsd:element name="codEjecutivoCuenta" type="tns:stCodEjecCta"/>
+	  	<xsd:element name="codOficinaAlta" type="tns:stCodOficAlta"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+	
+	<!-- ***** Response ***** -->
+	
+	<xsd:complexType name="ctBodyRs">
+	  <xsd:sequence>
+	  	<xsd:element name="tipoPersona" type="xsd:string"/>
+	  	<xsd:element name="numDocumento" type="xsd:string"/>
+	  	<xsd:element name="tipoDocumento" type="xsd:string"/>
+	  	<xsd:element name="nombreCliente" type="xsd:string"/>
+	  	<xsd:element name="codOficinaPrincipal" type="xsd:string"/>
+	  	<xsd:element name="descOficinaPrincipal" type="xsd:string"/>  
+	  	<xsd:element name="codRegistroGestor" type="xsd:string"/>
+	  	<xsd:element name="nomCompletoGestor" type="xsd:string"/>
+	  	<xsd:element name="codEtiqueta" type="xsd:string"/>
+	  	<xsd:element name="descEtiqueta" type="xsd:string"/>
+	  	<xsd:element name="codEmpleador" type="xsd:string"/>
+		<xsd:element name="nombreEmpleador" type="xsd:string"/>
+ 		<xsd:element name="nomCompletoEjecutivoCuenta" type="xsd:string"/>
+ 		<xsd:element name="descOficinaAlta" type="xsd:string"/>
+ 		<xsd:element name="codGerenciaTerritorial" type="xsd:string"/>
+ 		<xsd:element name="descGerenciaTerritorial" type="xsd:string"/>
+ 		<xsd:element name="fechaIngresoOficina" type="xsd:string"/>
+ 		<xsd:element name="horaIngresoOficina" type="xsd:string"/>
+ 		<xsd:element name="clasifBancoCliente" type="xsd:string"/>
+ 		<xsd:element name="clasifSFCliente" type="xsd:string"/>
+ 		<xsd:element name="relevanciaPublica" type="xsd:string"/>
+ 		<xsd:element name="buro" type="xsd:string"/>
+ 		<xsd:element name="deudaDirectaSF" type="xsd:string"/>
+ 		<xsd:element name="deudaIndirectaSF" type="xsd:string"/>
+ 		<xsd:element name="castigosSF" type="xsd:string"/>
+ 		<xsd:element name="totalSF" type="xsd:string"/>
+ 		<xsd:element name="deudaDirectaBanco" type="xsd:string"/>
+ 		<xsd:element name="deudaIndirectaBanco" type="xsd:string"/>
+ 		<xsd:element name="castigosBanco" type="xsd:string"/>
+ 		<xsd:element name="totalBanco" type="xsd:string"/>
+ 		<xsd:element name="porcentajeNOR" type="xsd:string"/>
+ 		<xsd:element name="porcentajeCPP" type="xsd:string"/>
+ 		<xsd:element name="porcentajeDEF" type="xsd:string"/>
+ 		<xsd:element name="porcentajeDUD" type="xsd:string"/>
+ 		<xsd:element name="porcentajePER" type="xsd:string"/>
+ 		<xsd:element name="tipoCredito" type="xsd:string"/>
+ 		<xsd:element name="entidad" type="xsd:string"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+	
+	<!-- ***** Messages ***** -->
+	
+	<xsd:complexType name="ctConDlgRIG4Rq">
+	  <xsd:sequence>
+	  	<xsd:element name="Header" type="ps9:ctHeaderRq"/>
+	  	<xsd:element name="Data" type="tns:ctBodyRq"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ctConDlgRIG4Rs">
+	  <xsd:sequence>
+	  	<xsd:element name="Header" type="ps9:ctHeaderRs"/>
+	  	<xsd:element minOccurs="0" name="Data" type="tns:ctBodyRs"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+
+	<!-- ======================== -->
+	<!-- SimpleTypes Definitions  -->
+	<!-- ======================== -->
+	<xsd:simpleType name="stCodCentral">
+	  <xsd:restriction base="xsd:string">
+	   <xsd:maxLength value="8"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stCodEjecCta">
+	  <xsd:restriction base="xsd:string">
+	   <xsd:maxLength value="8"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stCodOficAlta">
+	  <xsd:restriction base="xsd:string">
+	   <xsd:maxLength value="4"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+
+    <xsd:element name="ctBodyRq" type="tns:ctBodyRq">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctBodyRq;XSDElementDeclaration=2$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+    <xsd:element name="ctBodyRs" type="tns:ctBodyRs">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctBodyRs;XSDElementDeclaration=3$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+    <xsd:element name="ctConDlgRIG4Rq" type="tns:ctConDlgRIG4Rq">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctConDlgRIG4Rq;XSDElementDeclaration=4$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+    <xsd:element name="ctConDlgRIG4Rs" type="tns:ctConDlgRIG4Rs">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctConDlgRIG4Rs;XSDElementDeclaration=5$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

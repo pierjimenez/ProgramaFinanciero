@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><schema targetNamespace="http://grupobbva.com.pe/pf/rig4/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://grupobbva.com.pe/pf/rig4/">
+  <include schemaLocation="PF_RIG4.mxsd"/>
+</schema>

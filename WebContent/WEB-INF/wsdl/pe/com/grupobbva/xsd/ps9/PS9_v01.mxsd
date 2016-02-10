@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema elementFormDefault="qualified" targetNamespace="http://grupobbva.com.pe/xsd/ps9/" xmlns:tns="http://grupobbva.com.pe/xsd/ps9/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- ======================== -->
+	<!-- ComplexTypes Definitions -->
+	<!-- ======================== -->
+	
+	<xsd:complexType name="ctHeaderRq">
+	 <xsd:sequence>
+	  <xsd:element minOccurs="0" name="terminalLogico" type="tns:stTerminalLogico"/>
+	  <xsd:element minOccurs="0" name="terminalContable" type="tns:stTerminalContable"/>
+	  <xsd:element name="usuario" type="tns:stUsuario"/>
+	  <xsd:element minOccurs="0" name="opcionAplicacion" type="tns:stOpcAplic"/>
+	 </xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ctHeaderRs">
+	  <xsd:sequence>
+	  	<xsd:element name="codigo" type="xsd:string"/>
+	  	<xsd:element name="descripcion" type="xsd:string"/>
+	  	<xsd:element minOccurs="0" name="aviso" type="xsd:string"/>
+	  </xsd:sequence>
+	</xsd:complexType>
+	
+	<!-- ======================== -->
+	<!-- SimpleTypes Definitions  -->
+	<!-- ======================== -->
+	
+	<xsd:simpleType name="stTerminalLogico">
+	 <xsd:restriction base="xsd:string">
+	  <xsd:maxLength value="8"/>
+	 </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stTerminalContable">
+	 <xsd:restriction base="xsd:string">
+	  <xsd:maxLength value="8"/>
+	 </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stUsuario">
+	 <xsd:restriction base="xsd:string">
+	  <xsd:maxLength value="8"/>
+	 </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stOpcAplic">
+	 <xsd:restriction base="xsd:string">
+	  <xsd:maxLength value="2"/>
+	 </xsd:restriction>
+	</xsd:simpleType>
+	
+    <xsd:element name="ctHeaderRq" type="tns:ctHeaderRq">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctHeaderRq;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+    <xsd:element name="ctHeaderRs" type="tns:ctHeaderRs">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ctHeaderRs;XSDElementDeclaration=1$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>

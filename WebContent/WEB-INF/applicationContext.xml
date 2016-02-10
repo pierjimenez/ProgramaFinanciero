@@ -1,0 +1,317 @@
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+xmlns:p="http://www.springframework.org/schema/p" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	 <context:annotation-config />  
+  	 <context:component-scan base-package="pe.com" />  
+     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">  
+         <property name="dataSource" ref="dataSource" />  
+         <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>  
+         <property name="configLocation">  
+             <value>classpath:hibernate.cfg.xml</value>  
+         </property>  
+     </bean> 
+
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/PROFIN" />
+		<!--property name="jndiName" value="jdbc/PROFIN" /-->
+		<property name="lookupOnStartup" value="false" />
+		<property name="cache" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+	</bean>  
+ 
+ 
+<!-- 	<bean id="genericDAO"-->
+<!--		  class="pe.com.stefanini.core.dao.GenericDAOImpl"-->
+<!--		  scope="singleton">-->
+<!--		<property name="sessionFactory" ref="sessionFactory"/>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="genericBO"-->
+<!--		  class="pe.com.stefanini.core.bo.GenericBOImpl"-->
+<!--		  scope="singleton">-->
+<!--		<property name="genericDAO" ref="genericDAO" />-->
+<!--	</bean>-->
+	
+<!--	<bean id="usuarioBO"-->
+<!--		  class="pe.com.bbva.iipf.seguridad.bo.impl.UsuarioBOImpl"-->
+<!--		  parent="genericBO"-->
+<!--		  scope="singleton">-->
+<!--	</bean>-->
+	<!--Definicion de Threads-->
+ 	<bean id="poolThreadTaskExecutor" 
+ 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"> 
+ 		<property name="corePoolSize" value="5" /> 
+ 		<property name="maxPoolSize" value="20" /> 
+ 		<property name="queueCapacity" value="30" /> 
+ 	</bean> 
+ 	
+ 	<bean id="adminColaHilos" class="pe.com.bbva.iipf.threads.AdminColaHilos">	
+		<constructor-arg ref="poolThreadTaskExecutor" />
+	</bean>
+	<bean id="hiloProceso" class="pe.com.bbva.iipf.threads.HiloProceso" scope="singleton">
+	</bean>
+	
+
+	<bean id="jobCartera" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadCarteraJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerCartera" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobCartera"></property>
+	  	<property name="cronExpression" value="0 0 04 1,2 * ?"></property>
+	</bean>
+	
+	<bean id="jobRating" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRatingJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerRating" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRating"></property>
+	  	<property name="cronExpression" value="0 5 04 * * ?"></property>
+	</bean>
+	
+	<bean id="jobRCCANUAL" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRCCANUALJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerRCCANUAL" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRCCANUAL"></property>
+	  	<property name="cronExpression" value="0 10 04 1,2 * ?"></property>
+	</bean>
+	
+	<bean id="jobRCCMes" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRCCMesJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerRCCMes" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRCCMes"></property>
+	  	<property name="cronExpression" value="0 15 04 1,2 * ?"></property>
+	</bean>
+	
+	<bean id="jobRCD" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRCDJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerRCD" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRCD"></property>
+	  	<property name="cronExpression" value="0 20 04 1,2 * ?"></property>
+	</bean>
+	
+	<bean id="jobRenbec" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRenbecJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerRenbec" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRenbec"></property>
+	  	<property name="cronExpression" value="0 25 04 1,2,3,4,5,6,7,8,9,10 * ?"></property>
+	</bean>
+	<bean id="jobRenbecAnual" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRenbecAnualJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>	
+	<bean id="cronTriggerRenbecAnual" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRenbecAnual"></property>		 	
+	  	<property name="cronExpression" value="0 0 12 5 1 ? *"></property>
+	</bean>
+	
+	<bean id="jobSunat" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadSUNATJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerSunat" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobSunat"></property>
+	  	<property name="cronExpression" value="0 30 04 1,2 * ?"></property>
+	</bean>
+	
+	<bean id="jobRVWCG010" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRVWCG010Job"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerrvwcg10" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRVWCG010"></property>
+	  	<property name="cronExpression" value="0 35 04 * * ?"></property>
+	</bean>
+	
+	<bean id="jobRVTC001" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadRVTC001Job"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerrvtc001" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobRVTC001"></property>
+	  	<property name="cronExpression" value="0 40 04 * * ?"></property>
+	</bean>
+	
+	<bean id="jobTipoCambio" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadTipoCambioJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggertipocambio" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobTipoCambio"></property>
+	  	<property name="cronExpression" value="0 45 04 * * ?"></property>
+	</bean>
+	
+	<bean id="jobPrestamo" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadPrestamoJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerPrestamo" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobPrestamo"></property>
+	  	<property name="cronExpression" value="0 50 04 * * ?"></property>
+	</bean>
+	
+	<!--  ini Carga Automatica de Archivos de Garantia	-->
+	
+	<bean id="jobGarantia" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadGarantiaJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerGarantia" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobGarantia"></property>
+	  	<property name="cronExpression" value="0 0 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobDetGarantia" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadDetalleGarantiaJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerDetGarantia" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobDetGarantia"></property>
+	  	<property name="cronExpression" value="0 10 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobHipoteca" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadHipotecaJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerHipoteca" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobHipoteca"></property>
+	  	<property name="cronExpression" value="0 20 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobWarrant" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadWarrantJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerWarrant" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobWarrant"></property>
+	  	<property name="cronExpression" value="0 25 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobDepositoAplazo" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadDepositoAplazoJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerDepositoAplazo" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobDepositoAplazo"></property>
+	  	<property name="cronExpression" value="0 30 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobCuentaGarantia" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadCuentaGarantiaJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerCuentaGarantia" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobCuentaGarantia"></property>
+	  	<property name="cronExpression" value="0 35 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobStandBy" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadStandByJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerStandBy" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobStandBy"></property>
+	  	<property name="cronExpression" value="0 40 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobFianzaSolidaria" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadFianzaSolidariaJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerFianzaSolidaria" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobFianzaSolidaria"></property>
+	  	<property name="cronExpression" value="0 45 05 * * ?"></property>
+	</bean>
+	
+	<bean id="jobFondosMutuos" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	  <property name="targetObject" ref="loadFondosMutuosJob"></property>
+	  <property name="targetMethod" value="executeLoadMassive"></property>
+	  <property name="concurrent" value="false"></property>
+	</bean>
+	<bean id="cronTriggerFondosMutuos" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobFondosMutuos"></property>
+	  	<property name="cronExpression" value="0 50 05 * * ?"></property>
+	</bean>
+	
+	<!--  fin Carga Automatica de Archivos de Garantia	-->
+	
+	<bean id="schedulerFactoyBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"
+	 autowire="no">
+	  <property name="triggers">
+	    <list>
+	      <!--ref bean="cronTriggerCartera"></ref>
+		  <ref bean="cronTriggerRating"></ref>
+		  <ref bean="cronTriggerRCCANUAL"></ref>
+		  <ref bean="cronTriggerRCCMes"></ref>
+		  <ref bean="cronTriggerRCD"></ref>
+		  <ref bean="cronTriggerRenbec"></ref>
+		  <ref bean="cronTriggerRenbecAnual"></ref>
+	      <ref bean="cronTriggerSunat"></ref>
+	      <ref bean="cronTriggerrvwcg10"></ref>
+	      <ref bean="cronTriggerrvtc001"></ref>
+	      <ref bean="cronTriggertipocambio"></ref>
+    	  <ref bean="cronTriggerPrestamo"></ref>
+    	  
+    	  <ref bean="cronTriggerGarantia"></ref>
+    	  <ref bean="cronTriggerDetGarantia"></ref>
+    	  <ref bean="cronTriggerHipoteca"></ref>
+    	  <ref bean="cronTriggerWarrant"></ref>
+    	  <ref bean="cronTriggerDepositoAplazo"></ref>
+    	  <ref bean="cronTriggerCuentaGarantia"></ref>
+    	  <ref bean="cronTriggerStandBy"></ref>
+    	  <ref bean="cronTriggerFianzaSolidaria"></ref>   	  
+    	  <ref bean="cronTriggerFondosMutuos"></ref-->
+	    </list>
+	  </property>
+	</bean>
+	
+</beans>

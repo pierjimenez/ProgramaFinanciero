@@ -1,0 +1,44 @@
+#list-menu {
+ top: 0px; 
+ left: 0px;  
+ padding: 0;
+ margin:0; 
+}                
+#list-menu ul {
+ list-style-type: none;
+ margin:0;
+ font-size: 11px; 
+ padding: 0;
+} 
+
+#list-menu li {
+ list-style-type: none;
+ margin: 0;
+ text-indent:-25;
+ padding: 0;
+ border: 1px solid #999; 
+ background: #5c9ccc url(/ProgramaFinanciero/images/ui-bg_glass_75_79c9ec_1x400.png) 50% 50% repeat-x; 
+ color: #FFFFFF; 
+ font-weight: bold; 
+ font-size: 1.3em ;
+} 
+
+#list-menu a {
+ color: #414141;
+ font-size: 11px;
+ font-weight:bold;
+ font-family: Arial, sans-serif;
+ display: block;
+ padding: 2px 2px 2px 10px;
+ text-decoration: none; /*lets remove the link underlines*/
+ width:180px; 
+} 
+
+#list-menu a:link, #list-menu a:active, #list-menu a:visited {
+ color: #000000;
+}
+
+#list-menu a:hover {
+ color: #ffffff;
+
+} 

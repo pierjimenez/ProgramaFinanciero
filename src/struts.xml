@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	 
+	<constant name="struts.multipart.maxSize" value="20000000" /> 
+		
+	<package name="default" extends="struts-default">
+		<result-types>
+           <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<action name="index">
+			<result>login-ldap.jsp</result>
+		</action>     	
+	</package>	
+	
+	<package name="seguridad" extends="default">
+	
+		<action name="accesoAction" class="accesoAction" method ="execute">			 
+			 <result name="login" >login-ldap.jsp</result>
+			 <result name="error" >error.jsp</result>
+			 <result name="panel" type="tiles">panel</result>
+		</action>
+		<action name="loginAction" class="loginAction" method ="login">
+			 <result name="panel" type="tiles">panel</result>
+			 <result name="login" >login-ldap.jsp</result>
+			 <result name="error" >error.jsp</result>
+		</action>
+		<action name="home" class="seguridadAction" method="home" >
+			<result name="panel" type="tiles">panel</result>
+		</action>
+        <action name="registroUsuario" class="usuarioAction" method ="registroUsuario" >
+			 <result name="usuario" type="tiles">usuario</result>
+		</action>
+		<action name="addUsuarioAction" class="usuarioAction" method="save" >
+		    <result name ="usuario" type="tiles">usuario</result>  
+		</action> 
+		 <action name="seguridadDo" class="seguridadAction" method ="seguridad">
+	       <result name="seguridad" type="tiles">seguridad</result>
+	    </action>
+	    <action name="closeSession" class="seguridadAction" method="closeSession">
+	    	<result name="logout" >logout.jsp</result>
+	    </action>
+	    
+	    <action name="listaOpciones" class="opcionAction" method ="listaOpciones">
+	       <result name="listaOpciones" type="tiles">listaOpciones</result>
+	    </action>
+	    <action name="buscarOpciones" class="opcionAction" method ="buscarOpciones">
+	       <result name="listaOpciones" type="tiles">listaOpciones</result>
+	    </action>
+	    <action name="agregarOpcion" class="opcionAction" method ="agregarOpcion">
+	       <result name="edicionOpcion" type="tiles">edicionOpcion</result>
+		</action>
+		<action name="editarOpcion" class="opcionAction" method ="modificarOpcion">
+			<result name="edicionOpcion" type="tiles">edicionOpcion</result>
+		</action>		
+		<action name="guardarOpcion" class="opcionAction" method ="guardarOpcion">
+			<result name="edicionOpcion" type="tiles">edicionOpcion</result>
+		</action>
+		<action name="paginarOpciones" class="opcionAction" method ="paginarOpciones">
+			<result name="listaOpciones" type="tiles">listaOpciones</result>
+		</action>
+		
+		<action name="listaUsuarioPerfiles" class="usuarioPerfilAction" method ="listaUsuarioPerfiles">
+	       <result name="listaUsuarioPerfiles" type="tiles">listaUsuarioPerfiles</result>
+	    </action>
+	    <action name="buscarUsuarioPerfiles" class="usuarioPerfilAction" method ="buscarUsuarioPerfiles">
+	       <result name="listaUsuarioPerfiles" type="tiles">listaUsuarioPerfiles</result>
+	    </action>
+	    <action name="agregarUsuarioPerfil" class="usuarioPerfilAction" method ="agregarUsuarioPerfil">
+	       <result name="edicionUsuarioPerfil" type="tiles">edicionUsuarioPerfil</result>
+		</action>
+		<action name="editarUsuarioPerfil" class="usuarioPerfilAction" method ="modificarUsuarioPerfil">
+			<result name="edicionUsuarioPerfil" type="tiles">edicionUsuarioPerfil</result>
+		</action>		
+		<action name="guardarUsuarioPerfil" class="usuarioPerfilAction" method ="guardarUsuarioPerfil">
+			<result name="edicionUsuarioPerfil" type="tiles">edicionUsuarioPerfil</result>
+		</action>
+		<action name="paginarUsuarioPerfiles" class="usuarioPerfilAction" method ="paginarUsuarioPerfiles">
+			<result name="listaUsuarioPerfiles" type="tiles">listaUsuarioPerfiles</result>
+		</action>
+		<action name="listaOpcionPerfil" class="perfilAction" method ="listaOpcionPerfil">
+			<result name="edicionOpcionPerfil" type="tiles">edicionOpcionPerfil</result>
+		</action>
+		<action name="cargarOpcionesPorPerfil" class="perfilAction" method ="cargarOpcionesPorPerfil">
+			
+		</action>
+		<action name="guardarPermisos" class="perfilAction" method ="guardarPermisos">
+			
+		</action>
+		
+		<action name="listaRolPerfil" class="rolPerfilAction" method ="listaRolPerfil">
+			<result name="edicionRolPerfil" type="tiles">edicionRolPerfil</result>
+		</action>
+		<action name="loadRolByPerfil" class="rolPerfilAction" method ="loadRolByPerfil">
+			
+		</action>
+		
+		<action name="guardarRolPerfil" class="rolPerfilAction" method ="guardarRolPerfil">
+			
+		</action>
+		
+    </package>
+    
+    <package name="programa" extends="default"> 	
+        <action name="grupoAction" class="programaAction" method="grupo">
+			 <result name="grupo" type="tiles">grupo</result>
+		</action>
+		
+		<action name="editgrupoAction" class="programaAction" method="editgrupo">
+			 <result name="editgrupo" type="tiles">editgrupo</result>
+		</action>
+		
+		<action name="saveProgramaAction" class="programaAction" method="save">
+			  <result name="programa" type="tiles">programa</result>
+			  <result name="datosBasicos" type="tiles">datosBasicos</result>
+			  <result name="grupo" type="tiles">grupo</result>
+		</action>
+		<action name="buscarGrupoEmpresa" class="programaAction" method="buscarGrupoEmpresa">
+			<result name="grupo" type="tiles">grupo</result>
+		</action>	
+		<action name="loadListaMotivo" class="programaAction"
+			method="loadListaMotivo" />
+			
+		<action name="loadListaTipoOperacion" class="programaAction"
+			method="loadListaTipoOperacion" />
+			
+		<action name="loadListaEmpresaRC" class="programaAction"
+			method="loadListaEmpresaRC" />
+			
+		<action name="loadTablaArchivoRC" class="programaAction"
+			method="loadTablaArchivoRC" />
+	
+		<action name="buscarGrupoEmpresaEdit" class="programaAction" method="buscarGrupoEmpresaEdit">
+			<result name="editgrupo" type="tiles">editgrupo</result>
+		</action>
+		
+		<action name="buscarGrupoEmpresaEditAbierta" class="programaAction" method="buscarGrupoEmpresaEditAbierta">
+			<result name="editgrupoAbierto" type="tiles">editgrupoAbierto</result>
+		</action>
+		
+		<action name="consultarProgramaBlob" class="programaAction" method="consultarProgramaBlob">
+		</action>
+		<action name="saveProgramaBlob" class="programaAction"  method="saveProgramaBlob">
+		</action>
+		<action name="listarOtrasEmpresas" class="programaAction" method="listarOtrasEmpresas">
+		</action>
+		
+		<action name="consultarSintesisEconBlob" class="sintesisEconoAction" method="consultarSintesisEconBlob">
+		</action>
+		<action name="saveSintesisEconBlob" class="sintesisEconoAction"  method="saveSintesisEconBlob">
+		</action>	
+				
+		<action name="consultarDatosBasicoBlob" class="datosBasicosAction" method="consultarDatosBasicoBlob">
+		</action>
+		<action name="saveDatosBasicoBlob" class="datosBasicosAction"  method="saveDatosBasicoBlob">
+		</action>	
+		
+		<action name="consultarRatingBlob" class="ratingAction" method="consultarRatingBlob">
+		</action>
+			<action name="saveRatingBlob" class="ratingAction"  method="saveRatingBlob">
+		</action>		
+		
+		<action name="conluirPrograma" class="programaAction" method="conluirPrograma">
+			<result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>
+		</action>
+		
+				
+		<action name="initDatosBasicos" class="datosBasicosAction" method="init">
+			<result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="refreshDatosBasicos" class="datosBasicosAction" method="refreshDatosBasicos">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		
+		<action name="buscarCIIUAction" class="datosBasicosAction" method="buscarActividadesEconomicas">
+		</action>
+		<action name="updateDBAction" class="datosBasicosAction" method="updateDatosBasicos">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="addAccionista" class="datosBasicosAction" method="addAccionista">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteAccionista" class="datosBasicosAction" method="deleteAccionista">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllAccionistas" class="datosBasicosAction" method="saveAllAccionistas">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="addCapitalizacion" class="datosBasicosAction" method="addCapitalizacion">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteCapitalizacion" class="datosBasicosAction" method="deleteCapitalizacion">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllCapitalizacion" class="datosBasicosAction" method="saveAllCapitalizacion">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="editAccionista" class="datosBasicosAction" method="editAccionista">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+	     <action name="obtenerAccionista" class="datosBasicosAction" method="obtenerAccionista" >
+		</action>
+		
+		<action name="addEjecutivo" class="datosBasicosAction" method="addEjecutivo">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteEjecutivo" class="datosBasicosAction" method="deleteEjecutivo">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllEjecutivo" class="datosBasicosAction" method="saveAllEjecutivo">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="addParticipaciones" class="datosBasicosAction" method="addParticipaciones">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteParticipaciones" class="datosBasicosAction" method="deleteParticipaciones">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllParticipaciones" class="datosBasicosAction" method="saveAllParticipaciones">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="addRatingExterno" class="datosBasicosAction" method="addRatingExterno">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteRatingExterno" class="datosBasicosAction" method="deleteRatingExterno">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllRatingExterno" class="datosBasicosAction" method="saveAllRatingExterno">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="addLineaActividad" class="datosBasicosAction" method="addLineaActividad">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteLineaActividad" class="datosBasicosAction" method="deleteLineaActividad">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllLineaActividad" class="datosBasicosAction" method="saveAllLineaActividad">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		
+		<action name="addLineaNegocio" class="datosBasicosAction" method="addLineaNegocio">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="deleteLineaNegocio" class="datosBasicosAction" method="deleteLineaNegocio">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+		<action name="saveAllLineaNegocio" class="datosBasicosAction" method="saveAllLineaNegocio">
+			 <result name="datosBasicos" type="tiles">datosBasicos</result>
+		</action>
+
+
+	 	 <action name="dogenerarPDF"   class="generarPDFAction" method="ReportPDF">             
+	    	<result name="reportPDF" type="tiles">reportPDF</result>         
+	    </action> 
+
+		<action name="initAnalisisSectorial" class="analisisSectorialAction" method="init">
+			<result name="analisissectorial" type="tiles">analisissectorial</result>
+		</action>
+		<action name="analisisectorialAction" class="analisisSectorialAction">             
+	    <result name="analisissectorial" type="tiles">analisissectorial</result> 
+	    </action> 			
+				              
+	    <action name="dosave" class="analisisSectorialAction" method="save">  
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>				 
+			</interceptor-ref> 
+			<interceptor-ref name="defaultStack"></interceptor-ref>        
+	        <result name="analisissectorial" type="tiles">analisissectorial</result> 
+	    	<result name="input" type="tiles">analisissectorial</result>	    	
+	    </action> 	 
+	    
+	    <action name="doadjuntar" class="analisisSectorialAction" method="adjuntar">             
+	    <result name="analisissectorial" type="tiles">analisissectorial</result> 
+	    </action> 
+	    
+	    <action name="doUploadFile" class="uploadFileAction" method="UploadFile"> 
+	          <interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">image/png,image/x-png,image/gif,image/jpeg,image/pjpeg</param>				 
+			</interceptor-ref> 
+			<interceptor-ref name="defaultStack"></interceptor-ref>      
+	    <result name="verUploadFile" type="tiles">verUploadFile</result> 
+	    <result name="input" type="tiles">verUploadFile</result>
+	    </action> 
+	    <action name = "eliminarArchiAnalisiSect" class="analisisSectorialAction"  method="eliminar">
+	    	<result name = "analisissectorial" type = "tiles" >analisissectorial</result>
+	    </action>
+	    
+	                 
+	    <action name="dodownload"   class="analisisSectorialAction">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">4096</param>
+            </result>        
+	    </action> 
+	     
+	     <action name="dobuscar"   class="analisisSectorialAction" method="buscarArchivos">             
+	    	<result name="buscarArchivosUpload" type="tiles">buscarArchivosUpload</result>         
+	    </action>  
+	    
+	   <action name="doverUploadFile"   class="uploadFileAction" method="verUploadFile">             
+	    	<result name="verUploadFile" type="tiles">verUploadFile</result>         
+	    </action>  
+	    
+	    <action name="dobuscarArchivo"   class="analisisSectorialAction" method="buscarArchAvanzado">             
+	    	<result name="buscarArchivosUpload" type="tiles">buscarArchivosUpload</result>         
+	    </action>  
+	    
+	   <action name="dodirectoryFile"   class="analisisSectorialAction" method="directoryFile">             
+	    	<result name="buscarArchivosUpload" type="tiles">buscarArchivosUpload</result>         
+	    </action> 
+	    
+	    <action name="doFile"   class="analisisSectorialAction" method="File">             
+	    	<result name="buscarArchivosUpload" type="tiles">buscarArchivosUpload</result>         
+	    </action> 
+	    
+	    <action name="doDownloadFile"   class="analisisSectorialAction" method="DownloadFile">             
+	    	<result name="buscarArchivosUpload" type="tiles">buscarArchivosUpload</result>         
+	    </action> 
+	    
+	     <action name="doRetornarAS"   class="analisisSectorialAction" method="regresar">             
+	    	<result name="analisissectorial" type="tiles">analisissectorial</result>         
+	    </action>  
+	    	
+	    <action name="initRelacionesBancarias" class="relacionesBancariasAction" method="init">
+			<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>
+		</action>
+	    <action name="doUpdateBDRelacionesBancarias"   class="relacionesBancariasAction" method="updateRelacionesBancarias">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    
+	    <action name="refreshPoolBancario"   class="relacionesBancariasAction" method="refreshPoolBancario">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    
+	    <action name="dosaveLineasRelacionesBancarias" class="relacionesBancariasAction" method="saveLineasRelacionesBancarias">
+			 <result name="relacionesbancarias" type="tiles">relacionesbancarias</result>
+		</action> 
+	    	    
+	     <action name="doaddLinea"   class="relacionesBancariasAction" method="addLinea">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    
+	     <action name="dodelLinea"   class="relacionesBancariasAction" method="deleteLinea">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	
+		<action name="refrecarClasificacion"   class="relacionesBancariasAction" method="refrecarClasificacion">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	
+	    
+	 	 <action name="PoolbancarioAction"   class="relacionesBancariasAction" method="loadPoolBancario">             
+	    	<result name="poolbancario" type="tiles">poolbancario</result>         
+	    </action> 
+	    
+	    <action name="modeloRentabilidadAction"   class="relacionesBancariasAction" method="loadModeloRentabilidad">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    <action name="refreshModeloRentabilidadAction"   class="relacionesBancariasAction" method="RefreshModeloRentabilidad">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancariasrefresh</result>         
+	    </action>
+	   <action name="doaDerechaBanco"   class="relacionesBancariasAction" method="aDerechaBanco">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	   <action name="doaDerechaTodosBanco"   class="relacionesBancariasAction" method="aDerechaTodosBanco">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 	    
+	   <action name="doaIzquierdaBanco"   class="relacionesBancariasAction" method="aIzquierdaBanco">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    <action name="doaIzquierdaTodosBanco"   class="relacionesBancariasAction" method="aIzquierdaTodosBanco">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    
+	    
+	   <action name="doaDerechaEmpresa"   class="relacionesBancariasAction" method="aDerechaEmpresa">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	   <action name="doaDerechaTodosEmpresa"   class="relacionesBancariasAction" method="aDerechaTodosEmpresa">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 	    
+	   <action name="doaIzquierdaEmpresa"   class="relacionesBancariasAction" method="aIzquierdaEmpresa">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    <action name="doaIzquierdaTodosEmpresa"   class="relacionesBancariasAction" method="aIzquierdaTodosEmpresa">             
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>         
+	    </action> 
+	    
+	    
+	    	    	   	
+    	<action name="initFactoresRiesgo" class="factoresRiesgoAction" method="init">
+			<result name="factoresRiesgo" type="tiles">factoresRiesgo</result>
+		</action>
+	      <action name="TabbedPanel">
+      		<result>/pages/programa/factoresRiesgo.jsp</result>
+    	</action>
+    	
+    	
+    	<action name="doUpdateBDFactoresRiesgo"   class="factoresRiesgoAction" method="updateFactoresRiesgo">             
+	    	<result name="factoresRiesgo" type="tiles">factoresRiesgo</result>         
+	    </action> 	    
+    	
+    	<action name="dobuscarFR"   class="factoresRiesgoAction" method="buscarPageFR">             
+	    	<result name="buscarPageFR" type="tiles">buscarPageFR</result>         
+	    </action>  
+	    
+	    
+	    <action name="initPropuestaRiesgo" class="propuestaRiesgoAction" method="init">
+			<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>
+		</action> 	    
+	    <action name="doaddEstructuraLimite"   class="propuestaRiesgoAction" method="addEstructuraLimite">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 
+	    <action name="doaddEmpresaEstructuraLimite"   class="propuestaRiesgoAction" method="addEmpresa">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 
+	    <action name="dodelEstructuraLimite"   class="propuestaRiesgoAction" method="deleteEstructuraLimite">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 
+	    
+	    <action name="doloadPropuestaRiesgoIni"   class="propuestaRiesgoAction" method="loadPropuestaRiesgoIni">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 
+	    
+	       <action name="dodelAllEstructuraLimite"   class="propuestaRiesgoAction" method="deleteAllEstructuraLimite">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 
+	    
+	     <action name="dosaveEstructuraLimite" class="propuestaRiesgoAction" method="saveEstructuraLimite">
+			 <result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>
+		</action>      
+	    
+	    <action name="doUpdateBDPropuestaRiesgo"   class="propuestaRiesgoAction" method="updatePropuestaRiesgo">             
+	    	<result name="propuestaRiesgo" type="tiles">propuestaRiesgo</result>         
+	    </action> 	
+	    
+	    <action name="initPoliticasRiesgo" class="politicasRiesgoAction" method="init">
+			<result name="politicasRiesgo" type="tiles">politicasRiesgo</result>
+		</action> 	 
+	    <action name="doUpdateBDPoliticasRiesgo"   class="politicasRiesgoAction" method="updatePoliticaRiesgo">             
+	    	<result name="politicasRiesgo" type="tiles">politicasRiesgo</result>         
+	    </action> 	
+		   
+	    
+	    <action name = "initAnalisisEconomica" class="sintesisEconoAction"  method="init">
+	    	<result name = "sintesisEconomico" type = "tiles" >sintesisEconomico</result>
+	    </action>
+	    
+	    <action name = "saveExcel" class="sintesisEconoAction"  method="saveExcel">
+	    	<result name = "sintesisEconomico" type = "tiles" >sintesisEconomico</result>
+	    </action>
+	    <action name="downloadSintesis"   class="sintesisEconoAction" method="descargarSinstesisEconomico">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">4096</param>
+            </result>      
+            <result name = "sintesisEconomico" type = "tiles" >sintesisEconomico</result>    
+	    </action> 
+	    
+	    <action name="downloadPlantillaCompletada"   class="sintesisEconoAction" method="completarPlantilla">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">2097152</param>
+            </result>      
+            <result name = "sintesisEconomico" type = "tiles" >sintesisEconomico</result>    
+	    </action> 
+	    <action name = "eliminarArchiSinteEcono" class="sintesisEconoAction"  method="eliminar">
+	    	<result name = "sintesisEconomico" type = "tiles" >sintesisEconomico</result>
+	    </action>
+	    
+	    <action name = "initRating" class="ratingAction"  method="init">
+	    	<result name = "rating" type = "tiles" >rating</result>
+	    </action>
+	     <action name = "actualizarRating" class="ratingAction"  method="actualizarRating">
+	    	<result name = "rating" type = "tiles" >rating</result>
+	    </action>
+		
+		<action name="initAnexos" class="anexosAction" method="init">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="addFila" class="anexosAction" method="addFila">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="addColumna" class="anexosAction" method="addColumna">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="deleteColumna" class="anexosAction" method="deleteColumna">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="deleteFila" class="anexosAction" method="deleteFila">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="limpiarAnexo" class="anexosAction" method="limpiarAnexo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="editFila" class="anexosAction" method="editFila">
+		</action>
+		<action name="nuevaFila" class="anexosAction" method="nuevaFila">
+		</action>
+		<action name="saveAnexos" class="anexosAction" method="saveAnexos">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="obtenerRatingAnexo" class="anexosAction" method="obtenerRatingAnexo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="obtenerBureauAnexo" class="anexosAction" method="obtenerBureauAnexo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		<action name="obtenerBuroAccionistaAnexo" class="anexosAction" method="obtenerBuroAccionistaAnexo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="saveGarantias" class="anexosAction" method="saveGarantias">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="saveFileAnexo" class="anexosAction" method="saveFileAnexo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		 <action name="downloadFileAnexo"   class="anexosAction" method="descargarArchivo">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">4096</param>
+            </result>      
+            <result name = "anexos" type = "tiles" >anexos</result>    
+	    </action> 
+	    <action name = "eliminarArchiAnexos" class="anexosAction"  method="eliminar">
+	    	<result name = "anexos" type = "tiles" >anexos</result>
+	    </action>
+	    
+	    
+	    <action name="consultarDatosBasicoBlobRC" class="reporteCreditoAction" method="consultarDatosBasicoBlobRC">
+		</action>
+		<action name="saveDatosBasicoBlobRC" class="reporteCreditoAction"  method="saveDatosBasicoBlobRC">
+		</action>	
+		
+		<action name="consultarSintesisEconBlobRC" class="reporteCreditoAction" method="consultarSintesisEconBlobRC">
+		</action>
+		<action name="saveSintesisEconBlobRC" class="reporteCreditoAction"  method="saveSintesisEconBlobRC">
+		</action>	
+	    
+	    <action name="initReporteCredito" class="reporteCreditoAction" method="init">
+			<result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="updateCreditoAction" class="reporteCreditoAction" method="updateReporteCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		
+		<action name="refreshReporteCredito" class="reporteCreditoAction" method="refreshReporteCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		
+		<action name="addClaseCredito" class="reporteCreditoAction" method="addClaseCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="addClaseCreditoSublimite" class="reporteCreditoAction" method="addClaseCreditoSublimite">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="deleteClaseCredito" class="reporteCreditoAction" method="deleteClaseCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="saveAllClaseCredito" class="reporteCreditoAction" method="saveAllClaseCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="addCanceledRows" class="reporteCreditoAction" method="addCanceledRows">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="sincronizarClaseCredito" class="reporteCreditoAction" method="sincronizarClaseCredito">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>  
+		
+	    <action name="addCuentaGarantia"   class="reporteCreditoAction" method="addCuentaGarantia">             
+	    	<result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>         
+	    </action> 
+	    <action name="addNumeroGarantia"   class="reporteCreditoAction" method="addNumeroGarantia">             
+	    	<result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>         
+	    </action> 
+	    <action name="delNumeroGarantia"   class="reporteCreditoAction" method="delNumeroGarantia">             
+	    	<result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>         
+	    </action> 	    
+	    <action name="saveGarantia" class="reporteCreditoAction" method="saveGarantia">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action> 
+		
+		<action name="addSustento" class="reporteCreditoAction" method="addSustento">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		
+		<action name="updateSustento" class="reporteCreditoAction" method="updateSustento" >
+		</action>
+		
+		<action name="deleteSustento" class="reporteCreditoAction" method="deleteSustento">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		<action name="saveAllSustento" class="reporteCreditoAction" method="saveAllSustento">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action> 
+		<action name="consultarSustento" class="reporteCreditoAction" method="consultarSustento">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>  
+		
+		<action name="sincronizarDatos" class="reporteCreditoAction" method="sincronizarDatos">
+			 <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>  
+		
+		
+		<action name="saveFileReporteCredito" class="reporteCreditoAction" method="saveFileReporteCredito">
+			  <result name="reporteCreditoPF" type="tiles">reporteCreditoPF</result>
+		</action>
+		 <action name="downloadFileReporteCredito"   class="reporteCreditoAction" method="downloadFileReporteCredito">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">4096</param>
+            </result>      
+            <result name = "reporteCreditoPF" type = "tiles" >reporteCreditoPF</result>    
+	    </action> 
+	    <action name = "eliminarArchiReporteCredito" class="reporteCreditoAction"  method="eliminarArchiReporteCredito">
+	    	<result name = "reporteCreditoPF" type = "tiles" >reporteCreditoPF</result>
+	    </action>
+		
+		
+		
+		
+		<action name="downloadPDFCredito"   class="generarPDFCreditoAction">          
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">4096</param>
+            </result>        
+	    </action> 
+		
+		<action name="loadDetalleSaldo" class="anexosAction"
+			method="loadDetalleSaldo" />
+			
+		<action name="loadDetalleSaldoSublimite" class="anexosAction"
+			method="loadDetalleSaldoSublimite" />
+			
+		<action name="updatesaldo" class="anexosAction" method="updatesaldo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="editargrupoAbiertoAction" class="programaAction" method="editgrupoAbierto">
+			<result name="editgrupoAbierto" type="tiles">editgrupoAbierto</result>
+		</action>
+		
+		<action name = "actualizarProgramaAbierto" class="programaAction"  method="actualizarProgramaAbierto">
+	    	<result name = "modificarPrograma" type = "tiles" >modificarPrograma</result>	    	
+	    	<result name="editgrupoAbierto" type="tiles">editgrupoAbierto</result>
+	    </action>
+	    
+	    <action name="recalcularSaldo" class="anexosAction" method="recalcularSaldo">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		
+		<action name="agregarGarantia" class="anexosAction" method="agregarGarantia">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="eliminarGarantia" class="anexosAction" method="eliminarGarantia">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="sincronizarGarantia" class="anexosAction" method="sincronizarGarantia">
+			  <result name="anexos" type="tiles">anexos</result>
+		</action>
+		
+		<action name="cargarComboAccionista" class="anexosAction" method="cargarComboAccionista" >
+		</action>			
+		
+		<action name = "consultasModificaciones" class="programaAction"  method="consultasModificaciones">
+	    	<result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>
+	    </action>
+	    <action name = "buscarProgramas" class="programaAction"  method="buscarProgramas">
+	    	<result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>
+	    </action>
+	     <action name = "buscarProgramasByCriterio" class="programaAction"  method="buscarByCriterio">
+	    </action>
+	    <action name = "paginarProgramas" class="programaAction"  method="paginarProgramas">
+	    	<result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>
+	    </action>
+	    <action name = "modificarCopiarPrograma" class="programaAction"  method="modificarCopiarPrograma">
+	    	<result name = "modificarPrograma" type = "tiles" >modificarPrograma</result>	 
+	    	<result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>   	
+	    </action>
+	    <action name = "copiarPrograma" class="programaAction"  method="copiarPrograma">
+	    	<result name = "modificarPrograma" type = "tiles" >modificarPrograma</result>	    	
+	    	<result name="editgrupo" type="tiles">editgrupo</result>
+	    </action>
+	    <action name="downloadPDF"   class="generarPDFAction" method="descargarPDFGeneral">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">8192</param>
+            </result>
+             <result name = "consultasModificaciones" type = "tiles" >consultasModificaciones</result>         
+	    </action> 
+	    
+	    <action name="downloadPDFGeneralHilo" class="downloadPDFAction" method ="downloadPDFGeneralHilo">	       
+	    </action>
+	    
+	    <action name="descargarExcel2" class="generadorReporteExcelAction" method="descargarExcel2">
+			<result name="descargarExcel2" >responsetext.jsp</result>
+		</action>
+		<action name ="activarSession" class="programaAction" method="activarSession">
+		</action>
+	    <action name="refreshEfectividades" class="relacionesBancariasAction"  method="RefreshEfectividades">
+			<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>
+		</action>
+	    <action name="refreshClasificacionFinanciera" class="relacionesBancariasAction" method="RefreshClasificacionFinanciera">
+	    	<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>
+	    </action>
+	    
+	    <action name="actualizarComex" class="relacionesBancariasAction"  method="actualizarComex">
+			<result name="relacionesbancarias" type="tiles">relacionesbancarias</result>
+		</action>
+		
+		<action name="validarRenderBlob" class="programaAction"  method="validarRenderBlob">
+		</action>
+		<action name="validarExistFile" class="downloadPDFAction"  method="validarExistFile">
+		</action>
+
+	    
+	      <action name="downloadManual"   class="parametroAction" method="downloadManual">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType3}</param>
+                <param name="inputName">fileInputStream3</param>
+                <param name="contentDisposition">${contentDisposition3}</param>
+                <param name="bufferSize">2097152</param>
+            </result>
+             <result name="panel" type="tiles">panel</result>   
+	    </action>
+	    
+		
+    </package>   
+  
+    <package name="mantenimiento" extends="default">
+	    <action name="mantenimientos" class="mantenimientoAction" method ="mantenimientos">
+	       <result name="mantenimientos" type="tiles">mantenimientos</result>
+	    </action>
+	    <action name="listaTablas" class="tablaAction" method ="listaTablas">
+	       <result name="listaTablas" type="tiles">listaTablas</result>
+	    </action>
+	    <action name="buscarTablas" class="tablaAction" method ="buscarTablas">
+	       <result name="listaTablas" type="tiles">listaTablas</result>
+	    </action>
+	    <action name="agregarTabla" class="tablaAction" method ="agregarTabla">
+	       <result name="edicionTabla" type="tiles">edicionTabla</result>
+		</action>
+		<action name="editarTabla" class="tablaAction" method ="modificarTabla">
+			<result name="edicionTabla" type="tiles">edicionTabla</result>
+		</action>		
+		<action name="guardarTabla" class="tablaAction" method ="guardarTabla">
+			<result name="edicionTabla" type="tiles">edicionTabla</result>
+		</action>
+		<action name="paginarTablas" class="tablaAction" method ="paginarTablas">
+			<result name="listaTablas" type="tiles">listaTablas</result>
+		</action>
+		<action name="listaParametros" class="parametroAction" method ="listaParametros">
+	       <result name="listaParametros" type="tiles">listaParametros</result>
+	    </action>
+	    <action name="buscarParametros" class="parametroAction" method ="buscarParametros">
+	       <result name="listaParametros" type="tiles">listaParametros</result>
+	    </action>
+	    <action name="agregarParametro" class="parametroAction" method ="agregarParametro">
+	       <result name="edicionParametro" type="tiles">edicionParametro</result>
+		</action>
+		<action name="editarParametro" class="parametroAction" method ="modificarParametro">
+			<result name="edicionParametro" type="tiles">edicionParametro</result>
+		</action>		
+		<action name="guardarParametro" class="parametroAction" method ="guardarParametro">
+			<result name="edicionParametro" type="tiles">edicionParametro</result>
+		</action>
+		<action name="paginarParametros" class="parametroAction" method ="paginarParametros">
+			<result name="listaParametros" type="tiles">listaParametros</result>
+		</action>
+		
+	    <action name="buscarArchivoMnt" class="parametroAction" method ="buscarArchivoMnt">
+	       <result name="listaParametros" type="tiles">listaParametros</result>
+	    </action>
+	    <action name="paginarArchivosMnts" class="parametroAction" method ="paginarArchivosMnts">
+			<result name="listaParametros" type="tiles">listaParametros</result>
+		</action>
+		
+	  <action name="downloadFileMnt"   class="parametroAction" method="downloadFileMnt">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType2}</param>
+                <param name="inputName">fileInputStream2</param>
+                <param name="contentDisposition">${contentDisposition2}</param>
+                <param name="bufferSize">2097152</param>
+            </result>      
+            <result name = "listaParametros" type = "tiles" >listaParametros</result>    
+	    </action>
+	    <action name = "eliminarFileMnt" class="parametroAction"  method="eliminarFileMnt">
+	    	<result name = "listaParametros" type = "tiles" >listaParametros</result>
+	    </action>
+	    
+	    <action name="monitorLogCargaDatosIni" class="mCargaDatosAction" method ="iniciar">
+	       <result name="monitorLogCargaDatosIni" type="tiles">monitorLogCargaDatos</result>
+	    </action>
+	    <action name="monitorLogCargaDatosList" class="mCargaDatosAction" method ="listarLogCargas">
+	       <result name="monitorLogCargaDatosList" type="tiles">monitorLogCargaDatos</result>
+	    </action>
+	    
+	    <action name="reporteControlpfIni" class="reporteControlPFAction" method ="iniciar">
+	       <result name="reporteControlpfini" type="tiles">reporteControlpf</result>
+	    </action>
+	    <action name="reporteControlpfAction" class="reporteControlPFAction" method ="listarReporteControlpf">
+	       <result name="reporteControlpf" type="tiles">reporteControlpf</result>
+	    </action>
+	    
+	     <action name="paginadoReporteControlpf" class="reporteControlPFAction" method ="paginadoReporteControlpf">
+	       <result name="reporteControlpf" type="tiles">reporteControlpf</result>
+	    </action>
+	    <action name="paginadoReporteControlpfEmpresa" class="reporteControlPFAction" method ="paginadoReporteControlpfEmpresa">
+	       <result name="reporteControlpf" type="tiles">reporteControlpf</result>
+	    </action>
+	    
+	    <action name="paginadoReporteControlpfCantEmpresa" class="reporteControlPFAction" method ="paginadoReporteControlpfCantEmpresa">
+	       <result name="reporteControlpf" type="tiles">reporteControlpf</result>
+	    </action>
+	    
+	    
+	   <action name="descargarLogpf"   class="parametroAction" method="descargarLogpf">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">2097152</param>
+            </result>      
+            <result name = "listaParametros" type = "tiles" >listaParametros</result>    
+	    </action> 
+	    
+	    
+	   <action name="downloadReporteControlpf"   class="reporteControlPFAction" method="completarReporteControlpf">             
+	    	<result name="success" type="stream">
+                <param name="contentType">${contentType}</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">${contentDisposition}</param>
+                <param name="bufferSize">2097152</param>
+            </result>      
+            <result name = "reporteControlpf" type = "tiles" >reporteControlpf</result>    
+	    </action> 
+	    
+	    
+	    <action name="cargaManualDatos" class="eCargaDatosAction" method ="ingresar">
+	       <result name="cargaManualDatos" type="tiles">cargaManualDatos</result>
+	    </action>
+		<action name="ejecutarCargaDatos" class="eCargaDatosAction"  method="ejecutarCargaDatos">
+		</action>
+		
+		<action name="resultScriptAction"   class="parametroAction" method="loadResultScritp">    	   
+	    </action> 
+    </package>
+    
+    <package name="reportes" extends="default">
+       <action name="generarExcel" class="generadorReporteExcelAction" method ="generarExcel">
+			<result name="generarExcel" type="stream">
+			   <param name="contentDisposition">attachment;filename=reporte.xls</param>
+			   <param name="contentType">application/vnd.ms-excel</param> 
+			   <param name="inputName">inputStream</param>  
+			   <param name="bufferSize">2097152</param> 
+			</result>
+			
+	   </action>
+    </package>
+</struts>

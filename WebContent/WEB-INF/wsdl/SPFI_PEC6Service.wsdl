@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="SPFI_PEC6" targetNamespace="http://grupobbva.com.pe/spfi/pec6/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://grupobbva.com.pe/spfi/pec6/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="SPFI_PEC6SOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://grupobbva.com.pe/spfi/pec6/" xmlns:mrm="http://grupobbva.com.pe/spfi/pec6/">
+      <xsd:include schemaLocation="xsd/SPFI_PEC6.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="callPEC6_in">
+    <wsdl:part element="tns:ConSpfiPEC6Rq" name="ConSpfiPEC6Rq"/>
+  </wsdl:message>
+  <wsdl:message name="callPEC6_out">
+    <wsdl:part element="tns:ConSpfiPEC6Rs" name="ConSpfiPEC6Rs"/>
+  </wsdl:message>
+  <wsdl:portType name="SPFI_PEC6PortType">
+    <wsdl:operation name="callPEC6">
+      <wsdl:input message="tns:callPEC6_in" name="callPEC6_Input"/>
+      <wsdl:output message="tns:callPEC6_out" name="callPEC6_Output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SPFI_PEC6SOAP_HTTP_Binding" type="tns:SPFI_PEC6PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="callPEC6">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="callPEC6_Input">
+        <soap:body parts="ConSpfiPEC6Rq" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callPEC6_Output">
+        <soap:body parts="ConSpfiPEC6Rs" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SPFI_PEC6SOAP_HTTP_Service">
+    <wsdl:port binding="tns:SPFI_PEC6SOAP_HTTP_Binding" name="SPFI_PEC6SOAP_HTTP_Port">
+      <soap:address location="http://118.180.36.26:7802/spfi/pec6/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

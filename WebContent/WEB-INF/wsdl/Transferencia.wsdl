@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions targetNamespace="http://services.gnrws.pe.stefanini.com" xmlns:impl="http://services.gnrws.pe.stefanini.com" xmlns:intf="http://services.gnrws.pe.stefanini.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema targetNamespace="http://services.gnrws.pe.stefanini.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="validarUsuarioPorTipoResponse">
+    <complexType>
+     <sequence>
+      <element name="validarUsuarioPorTipoReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGeneral">
+    <complexType>
+     <sequence>
+      <element name="codSistema" nillable="true" type="xsd:string"/>
+      <element name="strPermisos" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGeneralResponse">
+    <complexType>
+     <sequence>
+      <element name="listaMenuGeneralReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGenerico">
+    <complexType>
+     <sequence>
+      <element name="strIdLogin" nillable="true" type="xsd:string"/>
+      <element name="sIdTrama" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strSesion" nillable="true" type="xsd:string"/>
+      <element name="strUsuario" nillable="true" type="xsd:string"/>
+      <element name="strPassword" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGenericoResponse">
+    <complexType>
+     <sequence>
+      <element name="listaMenuGenericoReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviaTramas">
+    <complexType>
+     <sequence>
+      <element name="strIdLogin" nillable="true" type="xsd:string"/>
+      <element name="strIdTrama" nillable="true" type="xsd:string"/>
+      <element name="strTrama" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strSesion" nillable="true" type="xsd:string"/>
+      <element name="strUsuario" nillable="true" type="xsd:string"/>
+      <element name="strPassword" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviaTramasResponse">
+    <complexType>
+     <sequence>
+      <element name="enviaTramasReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenu">
+    <complexType>
+     <sequence>
+      <element name="strIdLogin" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strSesion" nillable="true" type="xsd:string"/>
+      <element name="strUsuario" nillable="true" type="xsd:string"/>
+      <element name="strPassword" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuResponse">
+    <complexType>
+     <sequence>
+      <element name="listaMenuReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGenericoSinTecla">
+    <complexType>
+     <sequence>
+      <element name="strIdLogin" nillable="true" type="xsd:string"/>
+      <element name="sIdTrama" nillable="true" type="xsd:string"/>
+      <element name="strTecla" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strSesion" nillable="true" type="xsd:string"/>
+      <element name="strUsuario" nillable="true" type="xsd:string"/>
+      <element name="strPassword" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listaMenuGenericoSinTeclaResponse">
+    <complexType>
+     <sequence>
+      <element name="listaMenuGenericoSinTeclaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="soloTrama">
+    <complexType>
+     <sequence>
+      <element name="strIdTrama" nillable="true" type="xsd:string"/>
+      <element name="strTrama" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="soloTramaResponse">
+    <complexType>
+     <sequence>
+      <element name="soloTramaReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validarUsuarioPorTipo">
+    <complexType>
+     <sequence>
+      <element name="strIdLogin" nillable="true" type="xsd:string"/>
+      <element name="strAmbienteHOST" nillable="true" type="xsd:string"/>
+      <element name="strIpCliente" nillable="true" type="xsd:string"/>
+      <element name="strSesion" nillable="true" type="xsd:string"/>
+      <element name="strUsuario" nillable="true" type="xsd:string"/>
+      <element name="strPassword" nillable="true" type="xsd:string"/>
+      <element name="strCodigoSistema" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="listaMenuRequest">
+    <wsdl:part element="impl:listaMenu" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validarUsuarioPorTipoResponse">
+    <wsdl:part element="impl:validarUsuarioPorTipoResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="soloTramaResponse">
+    <wsdl:part element="impl:soloTramaResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="validarUsuarioPorTipoRequest">
+    <wsdl:part element="impl:validarUsuarioPorTipo" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGenericoResponse">
+    <wsdl:part element="impl:listaMenuGenericoResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuResponse">
+    <wsdl:part element="impl:listaMenuResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGenericoSinTeclaResponse">
+    <wsdl:part element="impl:listaMenuGenericoSinTeclaResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGeneralRequest">
+    <wsdl:part element="impl:listaMenuGeneral" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGenericoRequest">
+    <wsdl:part element="impl:listaMenuGenerico" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="enviaTramasResponse">
+    <wsdl:part element="impl:enviaTramasResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="enviaTramasRequest">
+    <wsdl:part element="impl:enviaTramas" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="soloTramaRequest">
+    <wsdl:part element="impl:soloTrama" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGenericoSinTeclaRequest">
+    <wsdl:part element="impl:listaMenuGenericoSinTecla" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="listaMenuGeneralResponse">
+    <wsdl:part element="impl:listaMenuGeneralResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Transferencia">
+    <wsdl:operation name="validarUsuarioPorTipo">
+      <wsdl:input message="impl:validarUsuarioPorTipoRequest" name="validarUsuarioPorTipoRequest"/>
+      <wsdl:output message="impl:validarUsuarioPorTipoResponse" name="validarUsuarioPorTipoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGeneral">
+      <wsdl:input message="impl:listaMenuGeneralRequest" name="listaMenuGeneralRequest"/>
+      <wsdl:output message="impl:listaMenuGeneralResponse" name="listaMenuGeneralResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGenerico">
+      <wsdl:input message="impl:listaMenuGenericoRequest" name="listaMenuGenericoRequest"/>
+      <wsdl:output message="impl:listaMenuGenericoResponse" name="listaMenuGenericoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="enviaTramas">
+      <wsdl:input message="impl:enviaTramasRequest" name="enviaTramasRequest"/>
+      <wsdl:output message="impl:enviaTramasResponse" name="enviaTramasResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenu">
+      <wsdl:input message="impl:listaMenuRequest" name="listaMenuRequest"/>
+      <wsdl:output message="impl:listaMenuResponse" name="listaMenuResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGenericoSinTecla">
+      <wsdl:input message="impl:listaMenuGenericoSinTeclaRequest" name="listaMenuGenericoSinTeclaRequest"/>
+      <wsdl:output message="impl:listaMenuGenericoSinTeclaResponse" name="listaMenuGenericoSinTeclaResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="soloTrama">
+      <wsdl:input message="impl:soloTramaRequest" name="soloTramaRequest"/>
+      <wsdl:output message="impl:soloTramaResponse" name="soloTramaResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransferenciaSoapBinding" type="impl:Transferencia">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validarUsuarioPorTipo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="validarUsuarioPorTipoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validarUsuarioPorTipoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGeneral">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="listaMenuGeneralRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listaMenuGeneralResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGenerico">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="listaMenuGenericoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listaMenuGenericoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviaTramas">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="enviaTramasRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="enviaTramasResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenu">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="listaMenuRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listaMenuResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaMenuGenericoSinTecla">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="listaMenuGenericoSinTeclaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listaMenuGenericoSinTeclaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="soloTrama">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="soloTramaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="soloTramaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TransferenciaService">
+    <wsdl:port binding="impl:TransferenciaSoapBinding" name="Transferencia">
+      <wsdlsoap:address location="http://118.180.36.103:9080/JWSGeneral/services/Transferencia"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

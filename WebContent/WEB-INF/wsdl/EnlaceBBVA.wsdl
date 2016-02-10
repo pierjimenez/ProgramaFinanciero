@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="EnlaceBBVA" targetNamespace="http://com.pe.grupobbva/EnlaceBBVA/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com.pe.grupobbva/EnlaceBBVA/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://com.pe.grupobbva/EnlaceBBVA/">
+      
+	<xsd:complexType name="cabecera">
+		<xsd:sequence>
+			<xsd:element name="usuario" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	  
+	  
+      <xsd:element name="ConsultaGruposEconomicoRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="codigoGrupoEconomico" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  
+      <xsd:element name="ConsultaGruposEconomicoReponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="codigoCentral" type="xsd:string"/>
+
+          	<xsd:element name="nombreEmpresa" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa" type="xsd:string"/>
+          	<xsd:element name="codigoCentral2" type="xsd:string"/>
+          	<xsd:element name="nombreEmpresa2" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa2" type="xsd:string"/>
+          	<xsd:element name="codigoCentral3" type="xsd:string"/>
+          	<xsd:element name="nombreEmpresa3" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa3" type="xsd:string"/>
+          	<xsd:element name="codigoCentral4" type="xsd:string"/>
+          	<xsd:element name="nombreEmpresa4" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa4" type="xsd:string"/>
+          	<xsd:element name="codigoCentral5" type="xsd:string"/>
+          	<xsd:element name="nombreEmpresa5" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa5" type="xsd:string"/>
+          	<xsd:element name="codigoCentral6" type="xsd:string"/>
+          	<xsd:element name="nombreEmpresa6" type="xsd:string"/>
+          	<xsd:element name="tipoEmpresa6" type="xsd:string"/>
+          	<xsd:element name="codError" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  
+	  <xsd:element name="ConsultaDatosClienteRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="tipoDocumentoIdentidad" type="xsd:string"/>
+          	<xsd:element name="numeroDocumentoIdentidad" type="xsd:string"/>
+          	<xsd:element name="codigoCentral" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  <xsd:element name="ConsultaDatosClienteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+			<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="codigoCentral" type="xsd:string"/>
+			<xsd:element name="RUC" type="xsd:string"/>
+			<xsd:element name="nombreEmpresa" type="xsd:string"/>
+			<xsd:element name="codigoPais" type="xsd:string"/>
+			<xsd:element name="nombrePais" type="xsd:string"/>
+			<xsd:element name="fechaNacimiento" type="xsd:string"/>
+			<xsd:element name="fechaAntig" type="xsd:string"/>
+			<xsd:element name="codError" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  
+	  <xsd:element name="ConsultaGruposRiesoBuroRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="tipoDocumentoIdentidad" type="xsd:string"/>
+          	<xsd:element name="numeroDocumentoIdentidad" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  
+	  <xsd:element name="ConsultaGruposRiesoBuroResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="cabecera" type="tns:cabecera"/>
+          	<xsd:element name="codigoGrupoRiesgoBuro" type="xsd:string"/>
+          	<xsd:element name="descripcionGrupoRiesgoBuro" type="xsd:string"/>
+          	<xsd:element name="codError" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+	  <xsd:element name="ConsultaGruposEconomico_fault">
+	  	<xsd:complexType>
+	  		<xsd:sequence>
+
+	  			<xsd:element name="ConsultaGruposEconomico_fault" type="xsd:string">
+	  			</xsd:element>
+	  		</xsd:sequence>
+	  	</xsd:complexType>
+	  </xsd:element>
+            <xsd:element name="EnlaceBBVAFault">
+            <xsd:complexType>
+
+            	<xsd:sequence>
+            		<xsd:element name="codError" type="xsd:string"/>
+            		<xsd:element name="mensajeError" type="xsd:string"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaDatosCliente_fault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="ConsultaDatosCliente_fault" type="xsd:string">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ConsultaGruposRiesoBuro_fault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="ConsultaGruposRiesoBuro_fault" type="xsd:string">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaGruposEconomicoRequest">
+    <wsdl:part element="tns:ConsultaGruposEconomicoRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaGruposEconomicoReponse">
+    <wsdl:part element="tns:ConsultaGruposEconomicoReponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="ConsultaDatosClienteRequest">
+    <wsdl:part element="tns:ConsultaDatosClienteRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosClienteResponse">
+    <wsdl:part element="tns:ConsultaDatosClienteResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="ConsultaGruposRiesoBuroRequest">
+    <wsdl:part element="tns:ConsultaGruposRiesoBuroRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaGruposRiesoBuroResponse">
+    <wsdl:part element="tns:ConsultaGruposRiesoBuroResponse" name="parameters"/>
+  </wsdl:message>
+
+  <wsdl:message name="ConsultaGruposEconomico_faultMsg">
+  	<wsdl:part element="tns:EnlaceBBVAFault" name="fault"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaDatosCliente_faultMsg">
+  	<wsdl:part element="tns:EnlaceBBVAFault" name="fault"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaGruposRiesoBuro_faultMsg">
+  	<wsdl:part element="tns:EnlaceBBVAFault" name="fault"/>
+  </wsdl:message>
+  <wsdl:portType name="EnlaceBBVA">
+    <wsdl:operation name="ConsultaGruposEconomico">
+      <wsdl:input message="tns:ConsultaGruposEconomicoRequest"/>
+      <wsdl:output message="tns:ConsultaGruposEconomicoReponse"/>
+       <wsdl:fault message="tns:ConsultaGruposEconomico_faultMsg" name="ConsultaGrupoEconomicoFault"/>
+        </wsdl:operation>
+	<wsdl:operation name="ConsultaDatosCliente">
+      <wsdl:input message="tns:ConsultaDatosClienteRequest"/>
+      <wsdl:output message="tns:ConsultaDatosClienteResponse"/>
+            <wsdl:fault message="tns:ConsultaDatosCliente_faultMsg" name="ConsultaDatosClienteFault"/>
+        </wsdl:operation>
+	<wsdl:operation name="ConsultaGruposRiesoBuro">
+      <wsdl:input message="tns:ConsultaGruposRiesoBuroRequest"/>
+      <wsdl:output message="tns:ConsultaGruposRiesoBuroResponse"/>
+            <wsdl:fault message="tns:ConsultaGruposRiesoBuro_faultMsg" name="ConsultaGrupoRiesgoFault"/>
+        </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="EnlaceBBVASOAP" type="tns:EnlaceBBVA">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ConsultaGruposEconomico">
+      <soap:operation soapAction="http://com.pe.grupobbva/EnlaceBBVA/ConsultaGruposEconomico"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="ConsultaDatosCliente">
+      <soap:operation soapAction="http://com.pe.grupobbva/EnlaceBBVA/ConsultaDatosCliente"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="ConsultaGruposRiesoBuro">
+      <soap:operation soapAction="http://com.pe.grupobbva/EnlaceBBVA/ConsultaGruposRiesoBuro"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EnlaceBBVA">
+    <wsdl:port binding="tns:EnlaceBBVASOAP" name="EnlaceBBVASOAP">
+      <soap:address location="http://118.180.36.28:7801/BBVASERVICIOS/EnlaceBBVA/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

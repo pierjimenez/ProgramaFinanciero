@@ -1,0 +1,68 @@
+
+#wrapper #content #content_top #content_bottom #main_content #main_content_inner #box_blue #box_blue_inner .list_reset.list_check li a {
+	color: #FFF;
+	text-decoration: none;
+}
+.celeste {
+	color: #0053A1;
+}
+.celesteGrande {
+	color: #069;
+	font-size: 28px;
+	text-align: center;
+}
+.celesteoscuro {
+	color: #065888;
+}
+.textopequenio {
+	font-size: 10px;
+	color: #185298;
+}
+ul li {
+	list-style-type: disc;
+}
+.blanco {
+	color: #FFF;
+}
+.nombreprovincia {
+	height: 25px;
+	padding-top: 10px;
+}
+.textorestaurantesprovincias {
+	font-size: 13px;
+	margin-left:160px;
+	height:45px;
+	clear:both;
+	color: #036;
+	line-height: 20px;
+}
+.textorestaurantesprovincias a {
+	text-decoration: none;
+	color: #243E92;
+}
+.textoturismoprovincias {
+	margin-left: 310px;
+	clear: both;
+	height: 50px;
+	color: #036;
+	font-size: 13px;
+}
+.textoturismoprovincias a {
+	text-decoration: none;
+	color: #243E92;
+}
+#wrapper #content #content_top #content_bottom #main_content #main_content_inner #parteIzquierda {
+	float: left;
+	width: 385px;
+	background-image: url(../../images/portal/fondo_parteizquierdaBeneficios.jpg);
+	background-repeat: no-repeat;
+	padding: 20px;
+}
+#wrapper #content #content_top #content_bottom #main_content #main_content_inner #parteDerecha {
+	float: right;
+	width: 385px;
+	padding: 20px;
+}
+#wrapper #content #content_top #content_bottom #main_content #main_content_inner #parteInferior {
+	clear: both;
+}

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="default" template="/default.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/header.jsp"/>
+      <put-attribute name="body"   value="/body.jsp"/>
+      <put-attribute name="footer"   value="/footer.jsp"/>
+  </definition>
+  
+    <definition name="defaultPopup" template="/defaultPopup.jsp">      
+      <put-attribute name="body"   value="/body.jsp"/>     
+  </definition>
+  
+  <definition name="template" template="/template.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/header.jsp"/>
+      <put-attribute name="menu"   value="/menu.jsp"/>
+      <put-attribute name="body"   value="/body.jsp"/>
+      <put-attribute name="footer"   value="/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="default">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="programa" extends="default">
+      <put-attribute name="title"  value="Programa"/>
+      <put-attribute name="body"   value="/pages/programa/programa.jsp"/>      
+  </definition>
+  <definition name="modificarPrograma" extends="default">
+      <put-attribute name="title"  value="Panel"/>
+      <put-attribute name="body"   value="/pages/programa/modificar_programa.jsp"/>      
+  </definition>
+  <definition name="panel" extends="default">
+      <put-attribute name="title"  value="Panel"/>
+      <put-attribute name="body"   value="/pages/panel.jsp"/>      
+  </definition>
+  <definition name="grupo" extends="default">
+      <put-attribute name="title"  value="Grupo"/>
+      <put-attribute name="body"   value="/pages/programa/grupo.jsp"/>      
+  </definition>
+  
+   <definition name="editgrupo" extends="default">
+      <put-attribute name="title"  value="Editar Grupo"/>
+      <put-attribute name="body"   value="/pages/programa/copiagrupo.jsp"/>      
+  </definition>
+  
+   <definition name="editgrupoAbierto" extends="default">
+      <put-attribute name="title"  value="Editar Grupo Abierto"/>
+      <put-attribute name="body"   value="/pages/programa/editargrupoAbierto.jsp"/>      
+  </definition>
+ 
+  <definition name="usuario" extends="default">
+      <put-attribute name="title"  value="Usuario"/>
+      <put-attribute name="body"   value="/pages/seguridad/usuario.jsp"/>      
+  </definition>
+  <definition name="datosBasicos" extends="default">
+      <put-attribute name="title"  value="Datos Basicos"/>
+      <put-attribute name="body"   value="/pages/programa/datos_basicos.jsp"/>      
+  </definition>
+  
+  <definition name="sintesisEconomico" extends="default">
+      <put-attribute name="title"  value="Sintesis Economico"/>
+      <put-attribute name="body"   value="/pages/programa/sintesis_economico.jsp"/>      
+  </definition>
+  
+  <definition name="rating" extends="default">
+      <put-attribute name="title"  value="Sintesis Economico"/>
+      <put-attribute name="body"   value="/pages/programa/rating.jsp"/>      
+  </definition>
+  
+  <definition name="analisissectorial" extends="default">
+      <put-attribute name="title"  value="Analisis Sectorial"/>
+      <put-attribute name="body"   value="/pages/programa/analisis_sectorial.jsp"/>      
+  </definition>
+  
+   <definition name="buscarArchivosUpload" extends="default">
+      <put-attribute name="title"  value="Busque de archivos de Analisis Sectorial"/>
+      <put-attribute name="body"   value="/pages/programa/buscar_ArchivosUpload.jsp"/>      
+  </definition>
+  
+  <definition name="verUploadFile" extends="defaultPopup">
+      <put-attribute name="title"  value="Upload archivos"/>
+      <put-attribute name="body"   value="/pages/programa/uploadFile.jsp"/>      
+  </definition>
+  
+   <definition name="relacionesbancarias" extends="default">
+      <put-attribute name="title"  value="Relaciones Bancarias"/>
+      <put-attribute name="body"   value="/pages/programa/relaciones_bancarias.jsp"/>      
+  </definition>
+  
+   <definition name="poolbancario" extends="default">
+      <put-attribute name="title"  value="Pool Bancario"/>
+      <put-attribute name="body"   value="/pages/programa/PopupPoolBancario.jsp"/>      
+  </definition>
+  
+   <definition name="factoresRiesgo" extends="default">
+      <put-attribute name="title"  value="Factores de Riesgo"/>
+      <put-attribute name="body"   value="/pages/programa/factoresRiesgo.jsp"/>      
+  </definition>
+  
+    <definition name="propuestaRiesgo" extends="default">
+      <put-attribute name="title"  value="Propuesta de Riesgo"/>
+      <put-attribute name="body"   value="/pages/programa/propuestaRiesgo.jsp"/>      
+  </definition>
+  
+  
+  <definition name="politicasRiesgo" extends="default">
+      <put-attribute name="title"  value="Politicas de Riesgo"/>
+      <put-attribute name="body"   value="/pages/programa/politicasRiesgo.jsp"/>      
+  </definition>
+  
+  <definition name="anexos" extends="default">
+      <put-attribute name="title"  value="Posicion"/>
+      <put-attribute name="body"   value="/pages/programa/anexos.jsp"/>      
+  </definition>
+  
+  <definition name="reporteCreditoPF" extends="default">
+      <put-attribute name="title"  value="Reporte de Credito"/>
+      <put-attribute name="body"   value="/pages/programa/reporteCredito.jsp"/>      
+  </definition>
+    
+  <definition name="buscarPageFR" extends="default">
+      <put-attribute name="title"  value="Busque de archivos fatorees riesgp"/>
+      <put-attribute name="body"   value="/pages/programa/factoresRiesgo.jsp"/>      
+  </definition>
+  
+   <definition name="mantenimientos" extends="template">
+      <put-attribute name="title"  value="Mantenimientos"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/mantenimiento_panel.jsp"/>      
+  </definition>
+  
+  <definition name="listaTablas" extends="template">
+      <put-attribute name="title"  value="Mantenimento de Tablas"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/lista_tablas.jsp"/>      
+  </definition>
+  
+  <definition name="edicionTabla" extends="template">
+      <put-attribute name="title"  value="Edición de Tabla"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/edicion_tabla.jsp"/>      
+  </definition>
+  
+  <definition name="listaParametros" extends="template">
+      <put-attribute name="title"  value="Mantenimento de Parámetros"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/lista_parametros.jsp"/>      
+  </definition>
+  
+  <definition name="edicionParametro" extends="template">
+      <put-attribute name="title"  value="Edición de Tabla"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/edicion_parametro.jsp"/>      
+  </definition>
+  
+   <definition name="seguridad" extends="template">
+      <put-attribute name="title"  value="Seguridad"/>
+      <put-attribute name="body"   value="/pages/seguridad/seguridad_panel.jsp"/>      
+  </definition>
+  
+  <definition name="listaOpciones" extends="template">
+      <put-attribute name="title"  value="Mantenimento de Opciones"/>
+      <put-attribute name="body"   value="/pages/seguridad/lista_opciones.jsp"/>      
+  </definition>
+  
+  <definition name="edicionOpcion" extends="template">
+      <put-attribute name="title"  value="Edicion de Opcion"/>
+      <put-attribute name="body"   value="/pages/seguridad/edicion_opcion.jsp"/>      
+  </definition>
+  
+  <definition name="listaUsuarioPerfiles" extends="template">
+      <put-attribute name="title"  value="Mantenimento de Usuarios Perfil"/>
+      <put-attribute name="body"   value="/pages/seguridad/lista_usuariosperfil.jsp"/>      
+  </definition>
+  
+  <definition name="edicionUsuarioPerfil" extends="template">
+      <put-attribute name="title"  value="Edicion de Usuario Perfil"/>
+      <put-attribute name="body"   value="/pages/seguridad/edicion_usuarioperfil.jsp"/>      
+  </definition>
+  
+  <definition name="edicionOpcionPerfil" extends="template">
+      <put-attribute name="title"  value="Edicion de Opciones Por Perfil"/>
+      <put-attribute name="body"   value="/pages/seguridad/edicion_perfil_opciones.jsp"/>      
+  </definition>
+  
+  <definition name="edicionRolPerfil" extends="template">
+      <put-attribute name="title"  value="Edicion de Rol Por Perfil"/>
+      <put-attribute name="body"   value="/pages/seguridad/edicion_perfil_rol.jsp"/>      
+  </definition>
+  
+  <definition name="consultasModificaciones" extends="default">
+      <put-attribute name="title"  value="Consultas y Modificaciones"/>
+      <put-attribute name="body"   value="/pages/programa/consulta_modificacion.jsp"/>      
+  </definition>
+  
+  <definition name="monitorLogCargaDatos" extends="template">
+      <put-attribute name="title"  value="Monitor Carga Datos"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/log_carga_datos.jsp"/>      
+  </definition>
+    <definition name="reporteControlpf" extends="template">
+      <put-attribute name="title"  value="Reporte Control Programa Financiero"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/reporteControlPrograma.jsp"/>      
+  </definition>
+  <definition name="cargaManualDatos" extends="template">
+      <put-attribute name="title"  value="Carga Manual Datos"/>
+      <put-attribute name="body"   value="/pages/mantenimiento/carga_manual_datos.jsp"/>      
+  </definition>
+</tiles-definitions>

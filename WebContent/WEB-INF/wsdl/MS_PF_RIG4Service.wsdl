@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="MS_PF_RIG4" targetNamespace="http://grupobbva.com.pe/pf/rig4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://grupobbva.com.pe/pf/rig4/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="MS_PF_RIG4SOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://grupobbva.com.pe/pf/rig4/" xmlns:mrm="http://grupobbva.com.pe/pf/rig4/">
+      <xsd:include schemaLocation="pe/com/grupobbva/pf/rig4/PF_RIG4_WSDLGenWrapper.mxsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="callrig4_in">
+    <wsdl:part element="tns:ConDlgRIG4Rq" name="ConDlgRIG4Rq"/>
+  </wsdl:message>
+  <wsdl:message name="callrig4_out">
+    <wsdl:part element="tns:ConDlgRIG4Rs" name="ConDlgRIG4Rs"/>
+  </wsdl:message>
+  <wsdl:message name="callrig4_fault1">
+    <wsdl:part element="tns:ConDlgRIG4Rs" name="ConDlgRIG4Rs"/>
+  </wsdl:message>
+  <wsdl:portType name="MS_PF_RIG4PortType">
+    <wsdl:operation name="callrig4">
+      <wsdl:input message="tns:callrig4_in" name="callrig4_Input"/>
+      <wsdl:output message="tns:callrig4_out" name="callrig4_Output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MS_PF_RIG4SOAP_HTTP_Binding" type="tns:MS_PF_RIG4PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="callrig4">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="callrig4_Input">
+        <soap:body parts="ConDlgRIG4Rq" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="callrig4_Output">
+        <soap:body parts="ConDlgRIG4Rs" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MS_PF_RIG4SOAP_HTTP_Service">
+    <wsdl:port binding="tns:MS_PF_RIG4SOAP_HTTP_Binding" name="MS_PF_RIG4SOAP_HTTP_Port">
+      <soap:address location="http://118.180.36.26:7803/pf/rig4/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
